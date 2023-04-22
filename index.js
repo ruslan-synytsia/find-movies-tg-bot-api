@@ -7,11 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const bot = new TelegramBot(process.env.TOKEN, {polling: true});
-
-bot.on('polling_error', (error) => {
-  console.log(error);
-});
+const bot = new TelegramBot(process.env.TOKEN);
 
 bot.setWebHook(`${process.env.SERVER_URL}/webhook`);
 console.log(`Webhook set to ${process.env.SERVER_URL}/webhook`);
