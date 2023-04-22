@@ -20,3 +20,7 @@ bot.on('message', async (msg) => {
             }
         });
 });
+
+bot.on('polling_error', (error) => {
+  console.log(error);  // Вывод ошибки в консоль
+});
