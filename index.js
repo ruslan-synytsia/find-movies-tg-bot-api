@@ -14,10 +14,10 @@ const bot = new TelegramBot(token, {polling: true});
 server.listen(port, () => {
     bot.on('message', async (msg) => {
         const chatId = msg.chat.id;
-        bot.sendMessage(chatId,
+        await bot.sendMessage(chatId,
             `Hi, ${!msg.from.username ? msg.from.first_name : msg.from.username}✋\nI'll help you find the movies you need 😉`, {});
 
-        bot.sendMessage(chatId,
+        await bot.sendMessage(chatId,
             `👇Launch me👇`,
             {
                 reply_markup: {
