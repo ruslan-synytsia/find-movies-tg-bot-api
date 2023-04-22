@@ -7,16 +7,22 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const bot = new TelegramBot(process.env.TOKEN);
+
+bot.setWebHook(`${process.env.SERVER_URL}/webhook`);
+console.log(`Webhook set to ${process.env.SERVER_URL}/webhook`);
+
 app.post('/webhook', (req, res) => {
   const bot = new TelegramBot(process.env.TOKEN);
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 
+bot.on('message', (msg) => {
+  console.log(msg);
+  bot.sendMessage(msg.chat.id, 'Received your message!');
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server started on port ${process.env.PORT}`);
-  
-  const bot = new TelegramBot(process.env.TOKEN);
-  bot.setWebHook(`${process.env.SERVER_URL}/webhook`);
-  console.log(`Webhook set to ${process.env.SERVER_URL}/webhook`);
 });
