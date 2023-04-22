@@ -4,12 +4,14 @@ const TelegramBot = require('node-telegram-bot-api');
 
 // здесь нужно указать токен вашего бота, полученный от BotFather
 const token = process.env.TOKEN;
+console.log(token)
 
 // создаем новый экземпляр бота
 const bot = new TelegramBot(token, { polling: true });
 
 // приветственное сообщение при старте бота
 bot.on('message', (msg) => {
+  console.log(token)
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, `Привет, ${msg.from.first_name}! Я простой бот, который может отправлять сообщения.`);
 });
