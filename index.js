@@ -18,12 +18,14 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-bot.on('message', async (msg) => {
+bot.on('message', (msg) => {
+    console.log(msg.chat.id, msg.text);
+  
     const chatId = msg.chat.id;
-    await bot.sendMessage(chatId,
+    bot.sendMessage(chatId,
         `Hi, ${!msg.from.username ? msg.from.first_name : msg.from.username}✋\nI'll help you find the movies you need 😉`, {});
 
-    await bot.sendMessage(chatId,
+    bot.sendMessage(chatId,
         `👇Launch me👇`,
         {
             reply_markup: {
