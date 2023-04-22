@@ -20,10 +20,10 @@ app.post('/webhook', (req, res) => {
 
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
-    await bot.sendMessage(chatId,
+    bot.sendMessage(chatId,
         `Hi, ${!msg.from.username ? msg.from.first_name : msg.from.username}✋\nI'll help you find the movies you need 😉`, {});
 
-    await bot.sendMessage(chatId,
+    bot.sendMessage(chatId,
         `👇Launch me👇`,
         {
             reply_markup: {
