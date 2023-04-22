@@ -19,7 +19,8 @@ app.post('/webhook', (req, res) => {
 });
 
 bot.on('message', (msg) => {
-    console.log(msg.chat.id, msg.text);
+  console.log(msg);
+  bot.sendMessage(msg.chat.id, 'Received your message!');
 });
 
 app.listen(process.env.PORT, () => {
