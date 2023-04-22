@@ -20,20 +20,6 @@ app.post('/webhook', (req, res) => {
 
 bot.on('message', (msg) => {
     console.log(msg.chat.id, msg.text);
-  
-    const chatId = msg.chat.id;
-    bot.sendMessage(chatId,
-        `Hi, ${!msg.from.username ? msg.from.first_name : msg.from.username}✋\nI'll help you find the movies you need 😉`, {});
-
-    bot.sendMessage(chatId,
-        `👇Launch me👇`,
-        {
-            reply_markup: {
-                inline_keyboard: [
-                    [{text: "Let's GO!", web_app: {url: process.env.WEB_APP_URL}}]
-                ]
-            }
-        });
 });
 
 app.listen(process.env.PORT, () => {
